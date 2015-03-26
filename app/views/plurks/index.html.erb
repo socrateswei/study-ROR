@@ -1,0 +1,29 @@
+<h1>Plurks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Plurk ID</th>
+      <th>Name</th>
+      <th>Message</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plurks.each do |plurk| %>
+      <tr>
+        <td><%= plurk.id %></td>
+        <td><%= plurk.name %></td>
+        <td><%= plurk.content %></td>
+        <td><%= plurk.created_at %></td>
+        <td><%= link_to 'Edit', edit_plurk_path(plurk) %></td>
+        <td><%= link_to 'Destroy', plurk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plurk', new_plurk_path %>

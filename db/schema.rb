@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326024438) do
+ActiveRecord::Schema.define(version: 20150326060534) do
 
   create_table "plurks", force: true do |t|
     t.string   "name"
     t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "replies", force: true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.integer  "plurk_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

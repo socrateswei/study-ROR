@@ -1,5 +1,5 @@
 class PlurksController < ApplicationController
-  before_action :set_plurk, only: [:destroy, :update, :edit, :reply]
+  before_action :set_plurk, only: [:destroy, :update, :edit, :reply, :create_reply]
   def index
     @plurks = Plurk.all
   end
@@ -23,11 +23,23 @@ class PlurksController < ApplicationController
     redirect_to plurks_path
   end
   def reply
+    @reply = Reply.new
+  end
+  def create_reply
+    @reply = @plurk.replies.new(reply_params)
+    if @reply.save
+      redirect_to plurks_path
+    else
+      render :reply
+    end
   end
 
   private
   def plurk_params
     params.require(:plurk).permit(:name,:content)
+  end
+  def reply_params
+    params.require(:reply).permit(:plurk_id,:name,:content)
   end
   def set_plurk
     @plurk = Plurk.find(params[:id])

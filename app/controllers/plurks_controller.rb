@@ -22,6 +22,8 @@ class PlurksController < ApplicationController
     @plurk.update(plurk_params)
     redirect_to plurks_path
   end
+
+  private
   def plurk_params
     params.require(:plurk).permit(:name,:content)
   end

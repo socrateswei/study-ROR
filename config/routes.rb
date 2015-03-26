@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root :to => "plurks#index"
   resources :plurks
+  get 'plurks/:id/reply' => 'plurks#reply', as: :reply_plurk
+  post 'plurks/:id/reply' => 'plurks#create_reply', as: :create_reply_plurk
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

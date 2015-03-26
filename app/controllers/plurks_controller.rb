@@ -1,5 +1,5 @@
 class PlurksController < ApplicationController
-  before_action :set_plurk, only: [:destroy, :update, :edit]
+  before_action :set_plurk, only: [:destroy, :update, :edit, :reply]
   def index
     @plurks = Plurk.all
   end
@@ -21,6 +21,8 @@ class PlurksController < ApplicationController
   def update
     @plurk.update(plurk_params)
     redirect_to plurks_path
+  end
+  def reply
   end
 
   private

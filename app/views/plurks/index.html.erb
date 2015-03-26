@@ -21,7 +21,7 @@
         <td><%= link_to 'Reply', reply_plurk_path(plurk) %></td>
         <td><%= link_to 'Destroy', plurk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% if !plurk.replies.empty? %>
+      <% if plurk.replies.present? %>
         <td>Replies:</td>
       <% plurk.replies.each do |reply| %>
         <tr>

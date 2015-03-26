@@ -20,6 +20,16 @@
         <td><%= link_to 'Edit', edit_plurk_path(plurk) %></td>
         <td><%= link_to 'Destroy', plurk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% if !plurk.replies.empty? %>
+        <td>Replies:</td>
+      <% plurk.replies.each do |reply| %>
+        <tr>
+          <td><%= reply.name %></td>
+          <td><%= reply.content %></td>
+          <td><%= reply.created_at %></td>
+        </tr>
+      <% end %>
+      <% end %>
     <% end %>
   </tbody>
 </table>

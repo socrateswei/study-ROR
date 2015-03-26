@@ -1,4 +1,5 @@
 class PlurksController < ApplicationController
+  before_action :set_plurk, only: [:destroy]
   def index
     @plurks = Plurk.all
   end
@@ -13,7 +14,15 @@ class PlurksController < ApplicationController
       render :new
     end
   end
+  def destroy
+    @plurk.destroy
+    redirect_to plurks_path
+  end
   def plurk_params
     params.require(:plurk).permit(:name,:content)
   end
+  def set_plurk
+    @plurk = Plurk.find(params[:id])
+  end
+
 end

@@ -1,0 +1,2 @@
+class PlurksController < ApplicationController
+end

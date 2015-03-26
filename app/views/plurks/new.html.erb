@@ -1,15 +1,3 @@
 <h1>New Plurk</h1>
-<%= form_for(@plurk) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= render 'form' %>
 <%= link_to 'Home', plurks_path %>

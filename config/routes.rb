@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root :to => "plurks#index"
   resources :plurks
   get 'plurks/:id/reply' => 'plurks#reply', as: :reply_plurk

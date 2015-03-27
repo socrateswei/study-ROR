@@ -27,6 +27,7 @@
         <td>Replies:</td>
       <% plurk.replies.each do |reply| %>
         <tr>
+          <td><%= reply.user_id %></td>
           <td><%= reply.name %></td>
           <td><%= reply.content %></td>
           <td><%= reply.created_at %></td>

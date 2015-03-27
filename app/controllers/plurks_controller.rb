@@ -8,7 +8,7 @@ class PlurksController < ApplicationController
     @plurk = Plurk.new
   end
   def create
-    @plurk = Plurk.new(plurk_params)
+    @plurk = current_user.plurks.new(plurk_params)
     if @plurk.save
       redirect_to plurks_path
     else
@@ -37,7 +37,7 @@ class PlurksController < ApplicationController
 
   private
   def plurk_params
-    params.require(:plurk).permit(:name,:content)
+    params.require(:plurk).permit(:content)
   end
   def reply_params
     params.require(:reply).permit(:plurk_id,:name,:content)

@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Plurk ID</th>
+      <th>User ID</th>
       <th>Name</th>
       <th>Message</th>
       <th>Date</th>
@@ -14,6 +15,7 @@
     <% @plurks.each do |plurk| %>
       <tr>
         <td><%= plurk.id %></td>
+        <td><%= plurk.user_id %></td>
         <td><%= plurk.name %></td>
         <td><%= plurk.content %></td>
         <td><%= plurk.created_at %></td>

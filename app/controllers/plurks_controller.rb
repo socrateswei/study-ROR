@@ -1,4 +1,5 @@
 class PlurksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_plurk, only: [:destroy, :update, :edit, :reply, :create_reply]
   def index
     @plurks = Plurk.all

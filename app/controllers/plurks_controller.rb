@@ -28,7 +28,6 @@ class PlurksController < ApplicationController
   end
   def create_reply
     @reply = @plurk.replies.new(reply_params)
-    @reply.user_id = current_user.id
     if @reply.save
       redirect_to plurks_path
     else
@@ -41,7 +40,7 @@ class PlurksController < ApplicationController
     params.require(:plurk).permit(:content)
   end
   def reply_params
-    params.require(:reply).permit(:plurk_id,:content)
+    params.require(:reply).permit(:plurk_id,:content).merge(user: current_user)
   end
   def set_plurk
     @plurk = Plurk.find(params[:id])

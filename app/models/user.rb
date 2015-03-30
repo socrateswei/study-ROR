@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :plurks, :dependent => :destroy
   has_many :replies, :dependent => :destroy
+  has_many :relationships
+  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id"
 end

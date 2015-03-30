@@ -4,7 +4,7 @@
       @<%= plurk.created_at %> <%= link_to plurk.user.email %>  say: <%= plurk.content %> <br>
       <% if plurk.replies.present? %>
        <% plurk.replies.each do |reply| %>
-         @<%= reply.created_at %> <%= link_to reply.user.email %> reply: <%= reply.content %> <br>
+         --> <%= reply.created_at %> <%= link_to reply.user.email %> reply: <%= reply.content %> <br>
        <% end %>
       <% end %>
       <%= link_to 'Edit', edit_plurk_path(plurk) %>

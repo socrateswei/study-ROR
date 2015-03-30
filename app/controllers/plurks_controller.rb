@@ -2,7 +2,10 @@ class PlurksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_plurk, only: [:destroy, :update, :edit, :reply, :create_reply]
   def index
-    @plurks = Plurk.all
+    @plurks = current_user.plurks
+    current_user.followeds.each do |user|
+      @plurks += user.plurks
+    end
   end
   def new
     @plurk = Plurk.new

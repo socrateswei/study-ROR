@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
   has_many :plurks, :dependent => :destroy
   has_many :replies, :dependent => :destroy
   has_many :relationships
-  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id"
+  has_many :followeds, through: :relationships
 end

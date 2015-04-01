@@ -1,0 +1,66 @@
+<h1>Plurks</h1>
+
+    <% @plurks.each do |plurk| %>
+      @<%= plurk.created_at %> <%= link_to plurk.user.email %>  say: <%= plurk.content %> <br>
+      <% if plurk.replies.present? %>
+       <% plurk.replies.each do |reply| %>
+         --> <%= reply.created_at %> <%= link_to reply.user.email %> reply: <%= reply.content %> <br>
+       <% end %>
+      <% end %>
+      <%= link_to 'Edit', edit_plurk_path(plurk) %>
+      <%= link_to 'Reply', reply_plurk_path(plurk) %>
+      <%= link_to 'Destroy', plurk, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
+      <br>
+    <% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Plurk ID</th>
+      <th>User ID</th>
+      <th>Name</th>
+      <th>Message</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plurks.each do |plurk| %>
+      <tr>
+        <td><%= plurk.id %></td>
+        <td><%= plurk.user_id %></td>
+        <td><%= plurk.name %></td>
+        <td><%= plurk.content %></td>
+        <td><%= plurk.created_at %></td>
+        <td><%= link_to 'Edit', edit_plurk_path(plurk) %></td>
+        <td><%= link_to 'Reply', reply_plurk_path(plurk) %></td>
+        <td><%= link_to 'Destroy', plurk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% if plurk.replies.present? %>
+        <td>Replies:</td>
+      <% plurk.replies.each do |reply| %>
+        <tr>
+          <td><%= reply.user_id %></td>
+          <td><%= reply.name %></td>
+          <td><%= reply.content %></td>
+          <td><%= reply.created_at %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h2>New Plurk</h2>
+<% @plurk=Plurk.new %>
+<%= form_for(@plurk) do |f| %>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

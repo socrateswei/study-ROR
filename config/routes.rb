@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root :to => "plurks#index"
+  root :to => "timelines#index"
   resources :plurks
   get 'plurks/:id/reply' => 'plurks#reply', as: :reply_plurk
   post 'plurks/:id/reply' => 'plurks#create_reply', as: :create_reply_plurk

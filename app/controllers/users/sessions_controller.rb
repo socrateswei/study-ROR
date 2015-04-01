@@ -1,6 +1,12 @@
 class Users::SessionsController < Devise::SessionsController
-# before_filter :configure_sign_in_params, only: [:create]
-
+ # before_filter :configure_sign_in_params, only: [:create]
+  before_action :authenticate_user!
+  def find_user
+    @user = User.new
+  end
+  def result
+    @user = User.find_for_authentication(:email => params["user"]["email"])
+  end
   # GET /resource/sign_in
   # def new
   #   super

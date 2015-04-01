@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
+  devise_scope :user do
+    get 'users/find_user' => 'users/sessions#find_user', as: :find_user
+    post 'users/result' => 'users/sessions#result', as: :result
+  end
   root :to => "timelines#index"
   resources :plurks
   get 'plurks/:id/reply' => 'plurks#reply', as: :reply_plurk

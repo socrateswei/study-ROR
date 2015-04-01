@@ -1,0 +1,16 @@
+<h2>Find user</h2>
+
+<% if @user == current_user %>
+  <div class="field">
+    Why did you search yourself?
+  </div>
+<% elsif @user %>
+  <div class="field">
+   <%-# not implement add user feature yet -%>
+   Add <%= link_to @user.email, root_path %>
+  </div>
+<% else %>
+  <div class="field">
+    User Not Found
+  </div>
+<% end %>

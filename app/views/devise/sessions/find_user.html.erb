@@ -1,0 +1,12 @@
+<h2>Find user</h2>
+
+<%= form_for @user, :url => result_path(@user) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+<% end %>

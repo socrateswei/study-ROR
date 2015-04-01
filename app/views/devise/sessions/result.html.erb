@@ -6,8 +6,7 @@
   </div>
 <% elsif @user %>
   <div class="field">
-   <%-# not implement add user feature yet -%>
-   Add <%= link_to @user.email, root_path %>
+   Add <%= link_to @user.email, follow_path(:followed_id => @user.id) %>
   </div>
 <% else %>
   <div class="field">

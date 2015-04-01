@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/find_user' => 'users/sessions#find_user', as: :find_user
     post 'users/result' => 'users/sessions#result', as: :result
+    post 'users/follow' => 'users/sessions#follow', as: :follow
+    get 'users/follow' => 'users/sessions#follow'
   end
   root :to => "timelines#index"
   resources :plurks

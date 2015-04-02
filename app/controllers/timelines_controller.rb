@@ -1,10 +1,7 @@
 class TimelinesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @plurks = current_user.plurks
-    current_user.followeds.each do |user|
-      @plurks += user.plurks
-    end
+    @plurks = Plurk.where(user_id: [current_user.id, current_user.followed_ids]).order(created_at: :desc)
   end
 
 end

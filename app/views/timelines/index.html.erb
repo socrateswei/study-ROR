@@ -1,6 +1,6 @@
 <h1>Plurks</h1>
 
-    <% @plurks.sort.each do |plurk| %>
+    <% @plurks.each do |plurk| %>
       @<%= plurk.created_at %> <%= link_to plurk.user.email %>  say: <%= plurk.content %> <br>
       <% if plurk.replies.present? %>
        <% plurk.replies.each do |reply| %>

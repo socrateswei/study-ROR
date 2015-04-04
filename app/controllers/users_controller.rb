@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_action :get_current_user, :only => [:show, :follow]
   def show
-    @user = current_user
   end
   def find_user
     @user = User.find_for_authentication(:email => params[:email])
   end
   def follow
-    @user = current_user
     @relationship = @user.relationships.new(follow_params)
     if @relationship.save
       redirect_to root_path
@@ -16,6 +15,9 @@ class UsersController < ApplicationController
     end
   end
   private
+  def get_current_user
+    @user = current_user
+  end
   def follow_params
     params.permit(:followed_id)
   end

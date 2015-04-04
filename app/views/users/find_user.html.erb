@@ -1,0 +1,22 @@
+<h2>Find user</h2>
+<% if @user == current_user %>
+  <div class="field">
+    Why did you search yourself?
+  </div>
+<% elsif @user %>
+  Add <%= link_to @user.email, root_path %>
+<% else %>
+  <%if params[:email] %>
+  User Not Found
+  <% end %>
+<% end %>
+
+<%= form_tag(find_user_path, method: "get") do %>
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= email_field_tag :email %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>

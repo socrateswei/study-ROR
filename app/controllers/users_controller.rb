@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_action :get_current_user, :only => [:show, :follow]
+  before_action :get_current_user, :only => [:show, :follow, :unfollow]
   def show
   end
   def find_user
@@ -12,6 +12,14 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       redirect_to find_user_path
+    end
+  end
+  def unfollow
+    @relationship = @user.relationships.where(:followed_id => params[:users])
+    if @relationship.destroy_all
+      redirect_to user_path(:user)
+    else
+      redirect_to :back, :alter  => "Can't unfollow"
     end
   end
   private

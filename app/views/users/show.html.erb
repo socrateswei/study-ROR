@@ -3,6 +3,7 @@ User: <%= @user.email %> <br>
 <% if @user.followeds.present? %>
   Followed: <br>
   <% @user.followeds.each do |followed_user| %>
-    <%= followed_user.email %> <br>
+    <%= followed_user.email %>
+    <%= link_to "Unfollow", unfollow_path(followed_user), method: :delete, data: { confirm: 'QQ~ Are you sure?'} %> <br>
   <% end %>
 <% end %>

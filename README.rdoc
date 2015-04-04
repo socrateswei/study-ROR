@@ -4,8 +4,7 @@ This is only for recording my RoR study project.
 
 == Known issues and TODO
 * <tt>(:user_id, :followed_id)</tt> is unique. We should deal with the error messages
-* User info page
-* remove user following/followed (relationship)
 * Add :nickname to User
 * Delete/Edit reply
-
+* [Done] User info page
+* [Done] remove user following/followed (relationship)

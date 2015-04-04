@@ -4,7 +4,7 @@
     Why did you search yourself?
   </div>
 <% elsif @user %>
-  Add <%= link_to @user.email, root_path %>
+  Add <%= link_to @user.email, follow_path(:followed_id => @user.id), method: :post %>
 <% else %>
   <%if params[:email] %>
   User Not Found

@@ -1,0 +1,8 @@
+
+User: <%= @user.email %> <br>
+<% if @user.followeds.present? %>
+  Followed: <br>
+  <% @user.followeds.each do |followed_user| %>
+    <%= followed_user.email %> <br>
+  <% end %>
+<% end %>

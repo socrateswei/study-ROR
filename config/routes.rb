@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get ':users/find_user' => 'users#find_user', as: :find_user
   post ':users/follow' => 'users#follow', as: :follow
   devise_for :users
+  resources :users, only: [:show]
   root :to => "timelines#index"
   resources :plurks
   get 'plurks/:id/reply' => 'plurks#reply', as: :reply_plurk

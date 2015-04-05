@@ -23,8 +23,7 @@ class PlurksController < ApplicationController
       @plurk.destroy
       redirect_to root_path
     else
-      # NEED ERROR MSG HERE
-      redirect_to root_path
+      redirect_to root_path, alert: "permission denied!"
     end
   end
   def update
@@ -32,8 +31,7 @@ class PlurksController < ApplicationController
       @plurk.update(plurk_params)
       redirect_to root_path
     else
-      # NEED ERROR MSG HERE
-      redirect_to root_path
+      redirect_to root_path, alert: "permission denied!"
     end
   end
   def reply

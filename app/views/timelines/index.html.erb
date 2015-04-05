@@ -1,10 +1,10 @@
 <h1>Plurks</h1>
 
     <% @plurks.each do |plurk| %>
-      @<%= plurk.created_at %> <%= link_to plurk.user.nickname %>  say: <%= plurk.content %> <br>
+      @<%= plurk.created_at %> <%= link_to plurk.user.nickname, user_path(plurk.user) %>  say: <%= plurk.content %> <br>
       <% if plurk.replies.present? %>
        <% plurk.replies.each do |reply| %>
-         --> <%= reply.created_at %> <%= link_to reply.user.nickname %> reply: <%= reply.content %> <br>
+         --> <%= reply.created_at %> <%= link_to reply.user.nickname, user_path(reply.user) %> reply: <%= reply.content %> <br>
        <% end %>
       <% end %>
       <%= link_to 'Edit', edit_plurk_path(plurk) %>

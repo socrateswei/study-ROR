@@ -18,9 +18,9 @@ class UsersController < ApplicationController
   def unfollow
     @relationship = @user.relationships.where(:followed_id => params[:users])
     if @relationship.destroy_all
-      redirect_to user_path(:user)
+      redirect_to user_path(current_user)
     else
-      redirect_to :back, :alter  => "Can't unfollow"
+      redirect_to :back, alert: "You can't unfollow this guy!"
     end
   end
   private

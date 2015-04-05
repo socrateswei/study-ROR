@@ -19,12 +19,22 @@ class PlurksController < ApplicationController
     end
   end
   def destroy
-    @plurk.destroy
-    redirect_to root_path
+    if @plurk.user == current_user
+      @plurk.destroy
+      redirect_to root_path
+    else
+      # NEED ERROR MSG HERE
+      redirect_to root_path
+    end
   end
   def update
-    @plurk.update(plurk_params)
-    redirect_to root_path
+    if @plurk.user == current_user
+      @plurk.update(plurk_params)
+      redirect_to root_path
+    else
+      # NEED ERROR MSG HERE
+      redirect_to root_path
+    end
   end
   def reply
     @reply = Reply.new

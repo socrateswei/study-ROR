@@ -1,5 +1,6 @@
 
-User: <%= @user.email %> <br>
+<h1> <%= @user.nickname %> </h1><br>
+Email: <%= @user.email %> <br>
 <% if @user.followeds.present? %>
   Followed: <br>
   <% @user.followeds.each do |followed_user| %>

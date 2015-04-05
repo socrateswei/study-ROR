@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_action :get_current_user, :only => [:show, :follow, :unfollow]
+  before_action :get_current_user, :only => [:follow, :unfollow]
   def show
+    @user = User.find(params[:id])
   end
   def find_user
     @user = User.find_for_authentication(:email => params[:email])

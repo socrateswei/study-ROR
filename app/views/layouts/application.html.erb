@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if current_user %>
-          <li class="active"><%= link_to('Find User', find_user_path(:user)) %></li>
+          <li class="active"><%= link_to('Find User', find_user_path)%></li>
           <li class="active"><%= link_to('User Info', user_path(current_user)) %></li>
           <li class="active"><%= link_to('Change password', edit_registration_path(:user)) %></li>
           <li class="active"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>

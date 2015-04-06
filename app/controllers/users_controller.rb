@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.find_for_authentication(:email => params[:email])
   end
   def follow
-    @relationship = @user.relationships.new(follow_params)
+    @relationship = @user.relationships.new(:followed_id => params[:followed_id])
     if @relationship.valid?
       @relationship.save
       redirect_to root_path
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
   end
   def unfollow
-    @relationship = @user.relationships.where(:followed_id => params[:users])
+    @relationship = @user.relationships.where(:followed_id => params[:followed_id])
     if @relationship.destroy_all
       redirect_to user_path(current_user)
     else
@@ -27,8 +27,5 @@ class UsersController < ApplicationController
   private
   def get_current_user
     @user = current_user
-  end
-  def follow_params
-    params.permit(:followed_id)
   end
 end

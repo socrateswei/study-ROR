@@ -9,10 +9,11 @@ class UsersController < ApplicationController
   end
   def follow
     @relationship = @user.relationships.new(follow_params)
-    if @relationship.save
+    if @relationship.valid?
+      @relationship.save
       redirect_to root_path
     else
-      redirect_to find_user_path
+      redirect_to find_user_path, alert: @relationship.errors.messages[:user_id]
     end
   end
   def unfollow

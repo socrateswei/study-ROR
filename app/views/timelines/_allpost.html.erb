@@ -1,16 +1,24 @@
-<h1>Plurks</h1>
-
 <% @plurks.each do |plurk| %>
-  @<%= plurk.created_at %> <%= link_to plurk.user.nickname, user_path(plurk.user) %>  say: <%= plurk.content %> <br>
-  <% if plurk.replies.present? %>
-    <% plurk.replies.each do |reply| %>
-      --> <%= reply.created_at %> <%= link_to reply.user.nickname, user_path(reply.user) %> reply: <%= reply.content %> <br>
+  <div class="plurk-main">
+    <div class="plurk-body">
+      <%= link_to plurk.user.nickname, user_path(plurk.user) %> <span class="plurk-time"> <%= l plurk.created_at, format: :short %> </span>
+      <div class="plurk-content">
+        <%= plurk.content %>
+        <span class="plurk-button">
+          <%= render partial: 'button', locals: {plurk: plurk} %>
+        </span>
+      </div>
+    </div>
+    <% if plurk.replies.present? %>
+      <% plurk.replies.each do |reply| %>
+        <div class="plurk-reply">
+          <%= link_to reply.user.nickname, user_path(reply.user) %>
+          <span class="plurk-time"><%= l reply.created_at, fortmat: :short %> </span>
+          <div class="reply-content">
+            <%= reply.content %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= link_to 'Edit', edit_plurk_path(plurk) %>
-  <%= link_to 'Reply', reply_plurk_path(plurk) %>
-  <%= link_to 'Destroy', plurk, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <br>
-  <br>
+  </div>
 <% end %>
-<br>

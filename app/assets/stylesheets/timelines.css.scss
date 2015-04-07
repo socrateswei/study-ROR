@@ -1,3 +1,55 @@
 // Place all the styles related to the timelines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.plurk-main {
+  border-style: dashed;
+  -moz-box-shadow: 0 0 1px #eee;
+  box-solidhadow: 0 0 1px #eee;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.plurk-body {
+  background-color: #eee;
+  -webkit-border-radius: 10px;
+  -webkit-border-top-right-radius: 100px;
+  -webkit-border-bottom-right-radius: 100px;
+  -moz-border-radius: 10px;
+  -moz-border-radius-topright: 100px;
+  -moz-border-radius-bottomright: 100px;
+  border-radius: 10px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  text-indent: 12px;
+  width: auto;
+  margin: 10px;
+  padding: 10px;
+}
+
+.plurk-reply {
+  background-color: #ccc;
+  -webkit-border-radius: 100px;
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius: 100px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-radius: 100px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-indent: 12px;
+  width: auto;
+  margin: 10px;
+  padding: 10px;
+}
+
+.plurk-time {
+  font-size: small;
+  font-style: italic;
+}
+
+.plurk-button {
+  float: right;
+}

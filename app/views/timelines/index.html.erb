@@ -1,3 +1,4 @@
+<%= render 'new' %>
 <h1>Plurks</h1>
 
     <% @plurks.each do |plurk| %>
@@ -14,15 +15,3 @@
       <br>
     <% end %>
 <br>
-
-<h2>New Plurk</h2>
-<% @plurk=Plurk.new %>
-<%= form_for(@plurk) do |f| %>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

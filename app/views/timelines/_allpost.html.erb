@@ -1,0 +1,16 @@
+<h1>Plurks</h1>
+
+<% @plurks.each do |plurk| %>
+  @<%= plurk.created_at %> <%= link_to plurk.user.nickname, user_path(plurk.user) %>  say: <%= plurk.content %> <br>
+  <% if plurk.replies.present? %>
+    <% plurk.replies.each do |reply| %>
+      --> <%= reply.created_at %> <%= link_to reply.user.nickname, user_path(reply.user) %> reply: <%= reply.content %> <br>
+    <% end %>
+  <% end %>
+  <%= link_to 'Edit', edit_plurk_path(plurk) %>
+  <%= link_to 'Reply', reply_plurk_path(plurk) %>
+  <%= link_to 'Destroy', plurk, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
+  <br>
+<% end %>
+<br>

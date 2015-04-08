@@ -13,7 +13,7 @@
       <% plurk.replies.each do |reply| %>
         <div class="plurk-reply">
           <%= link_to reply.user.nickname, user_path(reply.user) %>
-          <span class="plurk-time"><%= l reply.created_at, fortmat: :short %> </span>
+          <span class="plurk-time"><%= l reply.created_at, format: :short %> </span>
           <div class="reply-content">
             <%= reply.content %>
           </div>

@@ -1,13 +1,24 @@
 <% @plurks.each do |plurk| %>
   <div class="plurk-main">
     <div class="plurk-body">
+      <span class="close-button">
+        <%= link_to '✕', plurk, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </span>
       <%= link_to plurk.user.nickname, user_path(plurk.user) %> <span class="plurk-time"> <%= l plurk.created_at, format: :short %> </span>
+      <button class="btn btn-default btn-xs"  type="button" data-toggle="collapse" data-target="#collapse-reply-id-<%= plurk.id %>" aria-expanded="false" aria-controls="collapse-reply-id-<%= plurk.id %>">
+        ↪︎ Reply
+      </button>
       <div class="plurk-content">
         <%= plurk.content %>
         <span class="plurk-button">
           <%= render partial: 'button', locals: {plurk: plurk} %>
         </span>
       </div>
+      <div class="collapse" id="collapse-reply-id-<%= plurk.id %>">
+        <%= render partial: 'reply_input', locals: {plurk: plurk} %>
+      </div>
+
+
     </div>
     <% if plurk.replies.present? %>
       <% plurk.replies.each do |reply| %>

@@ -1,0 +1,8 @@
+<% @reply = Reply.new %>
+<%= form_for @reply, :url => reply_plurk_path(plurk) do |f| %>
+  <div class="field">
+    <%= f.text_area :content, class: "form-control", rows: "1", placeholder: "What do you want to say?" %>
+    <%= f.submit "Reply", class: "btn btn-default" %>
+  </div>
+<% end %>
+

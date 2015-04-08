@@ -1,9 +1,26 @@
 <% @plurks.each do |plurk| %>
   <div class="plurk-main">
+    <% if plurk.user == current_user %>
+      <button type="button" class="close" data-toggle="modal" data-target="#delete-plurk-id-<%= plurk.id %>">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <% end %>
+    <!-- Modal -->
+    <div class="modal fade" id="delete-plurk-id-<%= plurk.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">ARE YOU SARE?</h4>
+          </div>
+          <div class="modal-footer">
+            <%= link_to 'Delete', plurk, method: :delete, class: "btn btn-danger", type: "button" %>
+            <button type="button" class="btn btn-success" data-dismiss="modal">No, I don't want to delete it</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="plurk-body">
-      <span class="close-button">
-        <%= link_to '✕', plurk, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </span>
       <%= link_to plurk.user.nickname, user_path(plurk.user) %> <span class="plurk-time"> <%= l plurk.created_at, format: :short %> </span>
       <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#plurk-content-id-<%= plurk.id %>">
         Edit

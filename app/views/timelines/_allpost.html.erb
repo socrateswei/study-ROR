@@ -33,9 +33,6 @@
       </button>
       <div class="plurk-content">
         <%= plurk.content %>
-        <span class="plurk-button">
-          <%= render partial: 'button', locals: {plurk: plurk} %>
-        </span>
       </div>
       <div class="collapse" id="collapse-reply-id-<%= plurk.id %>">
         <%= render partial: 'reply_input', locals: {plurk: plurk} %>

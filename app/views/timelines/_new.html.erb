@@ -1,10 +1,10 @@
 <% @plurk=Plurk.new %>
 <%= form_for(@plurk) do |f| %>
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-9 col-xs-9">
       <%= f.text_area :content, class: "form-control", rows: "1", placeholder: "Have something to poo?", required: true %>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 col-xs-1">
       <%= f.submit "Plurk", class: "btn btn-default" %>
     </div>
   </div>

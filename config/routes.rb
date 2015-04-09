@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'users/find_user' => 'users#find_user', as: :find_user
   post 'users/follow' => 'users#follow', as: :follow
   delete 'users/unfollow' => 'users#unfollow', as: :unfollow
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:show]
   root :to => "timelines#index"
   resources :plurks

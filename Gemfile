@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'paperclip', '~> 4.2'

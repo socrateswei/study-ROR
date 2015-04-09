@@ -6,6 +6,7 @@
   Email: <%= @user.email %>
   <%= link_to "follow", follow_path(:followed_id => @user.id), method: :post%> <br>
 <% end %>
+<%= image_tag @user.avatar.url(:medium) %><br>
 <% if @user.followeds.present? %>
   Followed: <br>
   <% @user.followeds.each do |followed_user| %>

@@ -21,6 +21,7 @@
       </div>
     </div>
     <div class="plurk-body">
+      <%= image_tag plurk.user.avatar.url(:thumb), size: "100x100", alt: "avatar" %>
       <%= link_to plurk.user.nickname, user_path(plurk.user) %> <span class="plurk-time"> <%= l plurk.created_at, format: :short %> </span>
       <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#plurk-content-id-<%= plurk.id %>">
         Edit

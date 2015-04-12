@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_action :get_current_user, :only => [:follow, :unfollow]
   before_action :set_user, :only => [:show]
+  respond_to :html, :json, :only => [:show]
   def show
   end
   def find_user

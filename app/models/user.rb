@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_many :plurks, :dependent => :destroy
   has_many :replies, :dependent => :destroy
-  has_many :relationships
-  has_many :followeds, through: :relationships
+  has_many :subscriptions, foreign_key: :follower_id, :dependent => :destroy
+  has_many :followings, through: :subscriptions
+  has_many :reverse_subscriptions, class_name: "Subscription", foreign_key: :following_id, :dependent => :destroy
+  has_many :followers, through: :reverse_subscriptions
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

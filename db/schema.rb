@@ -10,10 +10,10 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20150409175654) do
+
+ActiveRecord::Schema.define(version: 20150413045228) do
 
   create_table "plurks", force: true do |t|
-    t.string   "name"
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20150409175654) do
   add_index "relationships", ["user_id", "followed_id"], name: "index_relationships_on_user_id_and_followed_id", unique: true
 
   create_table "replies", force: true do |t|
-    t.string   "name"
     t.string   "content"
     t.integer  "plurk_id"
     t.datetime "created_at"

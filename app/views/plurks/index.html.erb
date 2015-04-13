@@ -18,7 +18,6 @@
     <tr>
       <th>Plurk ID</th>
       <th>User ID</th>
-      <th>Name</th>
       <th>Message</th>
       <th>Date</th>
     </tr>
@@ -29,7 +28,6 @@
       <tr>
         <td><%= plurk.id %></td>
         <td><%= plurk.user_id %></td>
-        <td><%= plurk.name %></td>
         <td><%= plurk.content %></td>
         <td><%= plurk.created_at %></td>
         <td><%= link_to 'Edit', edit_plurk_path(plurk) %></td>
@@ -41,7 +39,6 @@
       <% plurk.replies.each do |reply| %>
         <tr>
           <td><%= reply.user_id %></td>
-          <td><%= reply.name %></td>
           <td><%= reply.content %></td>
           <td><%= reply.created_at %></td>
         </tr>

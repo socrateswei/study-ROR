@@ -4,15 +4,15 @@
   Email: <%= @user.email %> <br>
 <% else %>
   Email: <%= @user.email %>
-  <%= link_to "follow", follow_path(:followed_id => @user.id), method: :post%> <br>
+  <%= link_to "follow", follow_path(:following_id => @user.id), method: :post%> <br>
 <% end %>
 <%= image_tag @user.avatar.url(:medium) %><br>
-<% if @user.followeds.present? %>
-  Followed: <br>
-  <% @user.followeds.each do |followed_user| %>
-    <%= link_to followed_user.email, user_path(followed_user) %>
+<% if @user.followings.present? %>
+  following: <br>
+  <% @user.followings.each do |following_user| %>
+    <%= link_to following_user.email, user_path(following_user) %>
     <% if @user == current_user %>
-      <%= link_to "Unfollow", unfollow_path(:followed_id => followed_user.id), method: :delete, data: { confirm: 'QQ~ Are you sure?'} %> <br>
+      <%= link_to "Unfollow", unfollow_path(:following_id => following_user.id), method: :delete, data: { confirm: 'QQ~ Are you sure?'} %> <br>
     <% else %>
       <br>
     <% end %>

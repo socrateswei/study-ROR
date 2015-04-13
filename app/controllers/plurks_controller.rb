@@ -3,7 +3,7 @@ class PlurksController < ApplicationController
   before_action :set_plurk, only: [:destroy, :update, :edit, :reply, :create_reply]
   def index
     @plurks = current_user.plurks
-    current_user.followeds.each do |user|
+    current_user.followings.each do |user|
       @plurks += user.plurks
     end
   end

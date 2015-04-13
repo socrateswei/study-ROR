@@ -18,3 +18,12 @@
     <% end %>
   <% end %>
 <% end %>
+<div>
+<% if @user.followers.present? %>
+  follower: <br>
+  <% @user.followers.each do |follower| %>
+    <%= link_to follower.email, user_path(follower) %>
+      <br>
+  <% end %>
+<% end %>
+</div>

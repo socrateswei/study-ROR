@@ -16,3 +16,5 @@
 /tmp
 
 *.yml
+.ruby-version
+.ruby-gemset

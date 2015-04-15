@@ -1,19 +1,19 @@
 <% @plurks.each do |plurk| %>
   <div class="plurk-main">
-    <%= render partial: 'button_delete', locals: {plurk: plurk} %>
+    <%= render partial: 'plurks/button_delete', locals: {plurk: plurk} %>
     <div class="row plurk-body">
         <div class="col col-md-2 col-xs-2">
           <%= image_tag plurk.user.avatar.url(:thumb), size: "60x60", alt: "avatar" %>
         </div>
         <div class="col-md-10 col-xs-10">
           <%= link_to plurk.user.nickname, user_path(plurk.user) %> <span class="plurk-time"> <%= l plurk.created_at, format: :short %> </span>
-          <%= render partial: 'button_edit', locals: {plurk: plurk} %>
-          <%= render partial: 'button_reply', locals: {plurk: plurk} %>
+          <%= render partial: 'plurks/button_edit', locals: {plurk: plurk} %>
+          <%= render partial: 'plurks/button_reply', locals: {plurk: plurk} %>
           <div class="plurk-content">
             <%= plurk.content %>
           </div>
           <div class="collapse" id="collapse-reply-id-<%= plurk.id %>">
-            <%= render partial: 'reply_input', locals: {plurk: plurk} %>
+            <%= render partial: 'plurks/reply_input', locals: {plurk: plurk} %>
           </div>
         </div>
     </div>

@@ -17,3 +17,5 @@
 
 *.yml
 public/
+.ruby-version
+.ruby-gemset

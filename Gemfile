@@ -41,5 +41,6 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'paperclip', '~> 4.2'
+gem 'pry'
 
 gem 'web-console', '~>2.0'

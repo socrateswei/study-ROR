@@ -201,6 +201,7 @@ DEPENDENCIES
   paperclip (~> 4.2)
   pry
   rails (= 4.2.1)
+  responders (~> 2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring

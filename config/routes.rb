@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :timelines, only: [:index]
     get 'plurks/:id/reply' => 'plurks#reply'
     post 'plurks/:id/reply' => 'plurks#create_reply'
+    post 'sign_in' => 'verifications#create'
+    delete 'sign_out' => 'verifications#destroy'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

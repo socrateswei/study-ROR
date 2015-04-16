@@ -24,6 +24,22 @@ class UsersController < ApplicationController
       redirect_to :back, alert: "You can't unfollow this guy!"
     end
   end
+  def followings
+    @users = current_user.followings
+    if @users.empty?
+      respond_to do |format|
+        format.json {render json: {message: 'No followings'} }
+      end
+    end
+  end
+  def followers
+    @users = current_user.followers
+    if @users.empty?
+      respond_to do |format|
+        format.json {render json: {message: 'No followers'} }
+      end
+    end
+  end
   private
   def set_user
     @user = User.find(params[:id])

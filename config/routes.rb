@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   # Routes for API
   scope '/api/v1', defaults: {format: 'json'} do
+    get 'users/followings' => 'users#followings'
+    get 'users/followers'  => 'users#followers'
     resources :plurks
     resources :timelines, only: [:index]
     get 'plurks/:id/reply' => 'plurks#reply'

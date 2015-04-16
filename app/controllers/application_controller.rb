@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   # Authenticate by token
   protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json'}
+  skip_before_action :verify_authenticity_token, :if => :json_request?
   before_action :authenticate_user_from_token!
   before_action :authenticate_user!
 
@@ -27,5 +28,8 @@ class ApplicationController < ActionController::Base
     if user && Devise.secure_compare(user.authentication_token, user_auth_token)
       sign_in(user, store: false)
     end
+  end
+  def json_request?
+    request.format.json?
   end
 end

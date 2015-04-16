@@ -9,7 +9,7 @@ class VerificationsController < ApplicationController
     if user.valid_password?(params[:password])
       user.save if !user.authentication_token.present?
       sign_in(user)
-      render :json => { user: { email: user.email, :auth_token => user.authentication_token } }, success: true, status: :created
+      render :json => { user: { email: user.email, :auth_token => user.authentication_token } }, :success => true, :status => :created
     else
       return invalid_login
     end
